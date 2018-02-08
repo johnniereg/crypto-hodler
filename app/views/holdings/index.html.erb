@@ -1,5 +1,5 @@
 <h1>Your current portfolio</h1>
-<%= link_to 'New holding', new_holding_path %>
+<%= link_to 'Input New Holding', new_holding_path %>
 
 <table>
     <tr>
@@ -11,7 +11,7 @@
         <tr>
             <td><%= holding.crypto %></td>
             <td><%= holding.amount %></td>
-            <td><%= link_to 'Show', holding_path(holding) %></td>
+            <td><%= link_to 'Details', holding_path(holding) %></td>
             <td><%= link_to 'Update', edit_holding_path(holding) %></td>
         </tr>
     <% end %>
