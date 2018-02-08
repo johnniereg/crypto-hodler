@@ -36,6 +36,13 @@ class HoldingsController < ApplicationController
         end
     end
 
+    def destroy
+        @holding = Holding.find(params[:id])
+        @holding.destroy
+
+        redirect_to holdings_path
+    end
+
     private
         def holding_params
             params.require(:holding).permit(:crypto, :amount)
