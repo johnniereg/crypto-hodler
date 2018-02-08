@@ -1,6 +1,6 @@
 <p>
-    <strong>Holding:</strong>
-    <%= @holding.crypto %>
+    <strong>Crypto Name:</strong>
+    <%= @response[0]["name"] %>
 </p>
 
 <p>
@@ -18,12 +18,6 @@
     <strong>BTC:</strong>
     <% @btc_value = (@holding.amount.to_f * @response[0]["price_btc"].to_f) %>
     <%= @btc_value %>
-</p>
-    
-
-
-<p>
-    <%= @response %>
 </p>
 
 <%= link_to 'Update', edit_holding_path(@holding) %>

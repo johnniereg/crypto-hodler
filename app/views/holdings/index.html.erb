@@ -5,12 +5,16 @@
     <tr>
         <th>Crypto</th>
         <th>Amount</th>
+        <th>USD</th>
+        <th>BTC</th>
     </tr>
 
     <% @holdings.each do |holding| %>
         <tr>
             <td><%= holding.crypto %></td>
             <td><%= holding.amount %></td>
+            <td>$ X.XX</td>
+            <td>฿ 0.00</td>
             <td><%= link_to 'Details', holding_path(holding) %></td>
             <td><%= link_to 'Update', edit_holding_path(holding) %></td>
             <td><%= link_to 'Delete', holding_path(holding), method: :delete, data: { confirm: 'Are you sure?' } %></td>
