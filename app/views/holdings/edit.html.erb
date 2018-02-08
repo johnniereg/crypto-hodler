@@ -1,34 +1,5 @@
 <h1>Update Holding</h1>
 
-<%= form_with(model: @holding) do |form| %>
-
-    <% if @holding.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-                <%= pluralize(@holding.errors.count, "error") %> prohibited this article from being saved:
-            </h2>
-            <ul>
-                <% @holding.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-
-    <p>
-        <%= form.label :crypto %><br>
-        <%= form.text_field :crypto %>
-    </p>
-
-    <p>
-        <%= form.label :amount %><br>
-        <%= form.text_area :amount %>
-    </p>
-
-    <p>
-        <%= form.submit %>
-    </p>
-
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back to Portfolio', holdings_path %>
