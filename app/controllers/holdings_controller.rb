@@ -9,14 +9,17 @@ class HoldingsController < ApplicationController
     end
 
     def new
+        @holding = Holding.new
     end
 
     def create
         @holding = Holding.new(holding_params)
 
-        @holding.save
-        redirect_to @holding
-        # render plain: params[:holding].inspect
+        if @holding.save
+            redirect_to @holding
+        else
+            render 'new'
+        end
     end
 
     private

@@ -2,6 +2,20 @@
 <h3>Input a new token and hold on for dear life.</h3>
 
 <%= form_with scope: :holding, url: holdings_path, local: true do |form| %>
+
+    <% if @holding.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@holding.errors.count, "error") %> prohibited this article from being saved:
+            </h2>
+            <ul>
+                <% @holding.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     <p>
         <%= form.label :Crypto %><br>
         <%= form.text_field :crypto %>
