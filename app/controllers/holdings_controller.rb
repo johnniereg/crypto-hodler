@@ -1,4 +1,8 @@
 class HoldingsController < ApplicationController
+
+    def index
+        @holdings = Holding.all
+    end
     
     def show
         @holding = Holding.find(params[:id])

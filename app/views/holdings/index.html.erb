@@ -1,0 +1,17 @@
+<h1>Your current portfolio</h1>
+<%= link_to 'New holding', new_holding_path %>
+
+<table>
+    <tr>
+        <th>Crypto</th>
+        <th>Amount</th>
+    </tr>
+
+    <% @holdings.each do |holding| %>
+        <tr>
+            <td><%= holding.crypto %></td>
+            <td><%= holding.amount %></td>
+            <td><%= link_to 'Show', holding_path(holding) %></td>
+        </tr>
+    <% end %>
+</table>
