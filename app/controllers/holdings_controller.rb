@@ -6,6 +6,8 @@ class HoldingsController < ApplicationController
     
     def show
         @holding = Holding.find(params[:id])
+        @api_string = 'https://api.coinmarketcap.com/v1/ticker/' + @holding[:crypto] + '/'
+        @response = HTTParty.get(@api_string)
     end
 
     def new
