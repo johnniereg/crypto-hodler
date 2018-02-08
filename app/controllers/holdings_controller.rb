@@ -12,6 +12,10 @@ class HoldingsController < ApplicationController
         @holding = Holding.new
     end
 
+    def edit
+        @holding = Holding.find(params[:id])
+    end
+
     def create
         @holding = Holding.new(holding_params)
 
@@ -19,6 +23,16 @@ class HoldingsController < ApplicationController
             redirect_to @holding
         else
             render 'new'
+        end
+    end
+
+    def update
+        @holding = Holding.find(params[:id])
+
+        if @holding.update(holding_params)
+            redirect_to @holding
+        else
+            render 'edit'
         end
     end
 

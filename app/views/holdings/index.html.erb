@@ -12,6 +12,7 @@
             <td><%= holding.crypto %></td>
             <td><%= holding.amount %></td>
             <td><%= link_to 'Show', holding_path(holding) %></td>
+            <td><%= link_to 'Update', edit_holding_path(holding) %></td>
         </tr>
     <% end %>
 </table>
