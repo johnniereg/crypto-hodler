@@ -9,6 +9,20 @@
 </p>
 
 <p>
+    <strong>USD:</strong>
+    <% @usd_value = (@holding.amount.to_f * @response[0]["price_usd"].to_f) %>
+    $<%= @usd_value %>
+<p>
+
+<p>
+    <strong>BTC:</strong>
+    <% @btc_value = (@holding.amount.to_f * @response[0]["price_btc"].to_f) %>
+    <%= @btc_value %>
+</p>
+    
+
+
+<p>
     <%= @response %>
 </p>
 
