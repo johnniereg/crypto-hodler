@@ -1,15 +1,15 @@
 <h1>New Holding</h1>
-<h3>Input a new holding and don't let go.</h3>
+<h3>Input a new token and hold on for dear life.</h3>
 
 <%= form_with scope: :holding, url: holdings_path, local: true do |form| %>
     <p>
-        <%= form.label :Name %><br>
-        <%= form.text_field :title %>
+        <%= form.label :Crypto %><br>
+        <%= form.text_field :crypto %>
     </p>
 
     <p>
         <%= form.label :Amount %><br>
-        <%= form.text_area :text %>
+        <%= form.text_area :amount %>
     </p>
 
     <p>
