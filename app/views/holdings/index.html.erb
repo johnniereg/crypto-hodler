@@ -1,19 +1,30 @@
 <h1>Your current portfolio</h1>
+<br>
 <%= link_to 'Input New Holding', new_holding_path %>
+<br>
+
+<% @total_usd = 0 %>
+<% @total_btc = 0 %>
+
+
 
 <table>
+    <br>
     <tr>
         <th>Crypto</th>
         <th>Amount</th>
         <th>USD</th>
         <th>BTC</th>
     </tr>
+    <br>
 
     <% @holdings.each do |holding| %>
         <% api_string = 'https://api.coinmarketcap.com/v1/ticker/' + holding.crypto %>
         <% response = HTTParty.get(api_string) %>
         <% @usd_value = (holding.amount.to_f * response[0]["price_usd"].to_f) %>
+        <% @total_usd += @usd_value %>
         <% @btc_value = (holding.amount.to_f * response[0]["price_btc"].to_f) %>
+        <% @total_btc += @btc_value %>
         <tr>
             <td>
                 <%= holding.crypto %>
@@ -32,4 +43,10 @@
             <td><%= link_to 'Delete', holding_path(holding), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
+    <tr>
+        <td><strong>Total: </strong></td>
+        <td></td>
+        <td>$ <%= @total_usd.round(2) %></td>
+        <td>฿ <%= @total_btc.round(8) %></td>
+    </tr>
 </table>
