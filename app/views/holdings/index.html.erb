@@ -11,8 +11,10 @@
     <tr>
         <th>Crypto</th>
         <th>Amount</th>
-        <th>USD</th>
-        <th>BTC</th>
+        <th>BTC Total</th>
+        <th>USD Total</th>
+        <th>BTC Price</th>
+        <th>USD Price</th>
         <th>1 HR</th>
         <th>24 HR</th>
         <th>1 WK</th>
@@ -38,10 +40,16 @@
                 <%= holding.amount %>
             </td>
             <td>
+                ฿ <%= @btc_value.round(8) %>
+            </td>
+            <td>
                 $ <%= @usd_value.round(2) %>
             </td>
             <td>
-                ฿ <%= @btc_value.round(8) %>
+                ฿ <%= response[0]["price_btc"] %>
+            </td>
+            <td>
+                $ <%= response[0]["price_usd"] %>
             </td>
             <td>
                 <%= response[0]["percent_change_1h"] %> %
@@ -57,10 +65,8 @@
             <td><%= link_to 'Delete', holding_path(holding), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
-    <tr>
-        <td><strong>Total: </strong></td>
-        <td></td>
-        <td>$ <%= @total_usd.round(2) %></td>
-        <td>฿ <%= @total_btc.round(8) %></td>
-    </tr>
 </table>
+<br>
+<strong>Total: </strong>
+<p>BTC: ฿ <%= @total_btc.round(8) %></p>
+<p>USD: $ <%= @total_usd.round(2) %></p>
