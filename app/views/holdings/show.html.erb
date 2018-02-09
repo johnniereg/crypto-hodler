@@ -22,12 +22,12 @@
 
 <p>
     <strong>Current BTC Price:</strong>
-    ฿ <%= @response[0]["price_btc"] %>
+    ฿ <%= @response[0]["price_btc"].to_f.round(8) %>
 </p>
 
 <p>
     <strong>Current USD Price:</strong>
-    $ <%= @response[0]["price_usd"] %>
+    $ <%= @response[0]["price_usd"].to_f.round(2) %>
 </p>
 
 <p>
