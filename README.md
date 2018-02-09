@@ -7,3 +7,9 @@ Input the name of a token and the amount you are holding. The current value in U
 Current values come from [Coin Market Cap's API](https://coinmarketcap.com/api/)
 
 Built as an exercise in object oriented programming, API calls and general Ruby on Rails skills.
+
+## GETTING STARTED
+
+Run ```bin/rails server```
+
+Visit http://localhost:3000/
