@@ -40,16 +40,16 @@
                 <%= holding.amount %>
             </td>
             <td>
-                ฿ <%= @btc_value.round(8) %>
+                ฿ <%= '%.8f' % @btc_value %>
             </td>
             <td>
-                $ <%= @usd_value.round(2) %>
+                $ <%= '%.2f' % @usd_value %>
             </td>
             <td>
-                ฿ <%= response[0]["price_btc"].to_f.round(8) %>
+                ฿ <%= '%.8f' % response[0]["price_btc"].to_f %>
             </td>
             <td>
-                $ <%= response[0]["price_usd"].to_f.round(2) %>
+                $ <%= '%.2f' % response[0]["price_usd"].to_f %>
             </td>
             <td>
                 <%= response[0]["percent_change_1h"] %> %
