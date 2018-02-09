@@ -6,8 +6,6 @@
 <% @total_usd = 0 %>
 <% @total_btc = 0 %>
 
-
-
 <table>
     <br>
     <tr>
@@ -15,16 +13,23 @@
         <th>Amount</th>
         <th>USD</th>
         <th>BTC</th>
+        <th>1 HR</th>
+        <th>24 HR</th>
+        <th>1 WK</th>
     </tr>
     <br>
 
     <% @holdings.each do |holding| %>
+
         <% api_string = 'https://api.coinmarketcap.com/v1/ticker/' + holding.crypto %>
         <% response = HTTParty.get(api_string) %>
+
         <% @usd_value = (holding.amount.to_f * response[0]["price_usd"].to_f) %>
-        <% @total_usd += @usd_value %>
         <% @btc_value = (holding.amount.to_f * response[0]["price_btc"].to_f) %>
+
+        <% @total_usd += @usd_value %>
         <% @total_btc += @btc_value %>
+
         <tr>
             <td>
                 <%= holding.crypto %>
@@ -37,6 +42,15 @@
             </td>
             <td>
                 ฿ <%= @btc_value.round(8) %>
+            </td>
+            <td>
+                <%= response[0]["percent_change_1h"] %> %
+            </td>
+            <td>
+                <%= response[0]["percent_change_24h"] %> %
+            </td>
+            <td>
+                <%= response[0]["percent_change_7d"] %> %
             </td>
             <td><%= link_to 'Details', holding_path(holding) %></td>
             <td><%= link_to 'Update', edit_holding_path(holding) %></td>
