@@ -4,21 +4,49 @@
 </p>
 
 <p>
-    <strong>Amount:</strong>
+    <strong>Holding:</strong>
     <%= @holding.amount %>
 </p>
 
 <p>
-    <strong>USD:</strong>
+    <strong>USD Value:</strong>
     <% @usd_value = (@holding.amount.to_f * @response[0]["price_usd"].to_f) %>
     $<%= @usd_value %>
 <p>
 
 <p>
-    <strong>BTC:</strong>
+    <strong>BTC Value:</strong>
     <% @btc_value = (@holding.amount.to_f * @response[0]["price_btc"].to_f) %>
     <%= @btc_value %>
 </p>
+
+<p>
+    <strong>Current BTC Price:</strong>
+    ฿ <%= @response[0]["price_btc"] %>
+</p>
+
+<p>
+    <strong>Current USD Price:</strong>
+    $ <%= @response[0]["price_usd"] %>
+</p>
+
+<p>
+    <strong>1 Hour Change:</strong>
+    <%= @response[0]["percent_change_1h"] %> %
+</p>
+
+<p>
+    <strong>24 Hour Change:</strong>
+    <%= @response[0]["percent_change_24h"] %> %
+</p>
+
+<p>
+    <strong>1 Week Change:</strong>
+    <%= @response[0]["percent_change_7d"] %> %
+</p>
+
+
+
 
 <%= link_to 'Update', edit_holding_path(@holding) %>
 <%= link_to 'Portfolio', holdings_path %>
