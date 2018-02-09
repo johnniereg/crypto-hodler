@@ -10,6 +10,8 @@ Built as an exercise in object oriented programming, API calls and general Ruby 
 
 ## GETTING STARTED
 
+
+Run ```bundle```
 Run ```bin/rails server```
 
 Visit http://localhost:3000/
