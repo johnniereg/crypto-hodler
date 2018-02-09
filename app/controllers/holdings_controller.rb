@@ -2,6 +2,7 @@ class HoldingsController < ApplicationController
 
     def index
         @holdings = Holding.all
+        tokens
     end
     
     def show
@@ -43,6 +44,10 @@ class HoldingsController < ApplicationController
         @holding.destroy
 
         redirect_to holdings_path
+    end
+
+    def tokens
+        @tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/')
     end
 
     private
