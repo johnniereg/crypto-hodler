@@ -46,9 +46,9 @@ class HoldingsController < ApplicationController
         redirect_to holdings_path
     end
 
-    # Return CoinMarketCap API response for all coins
+    # Return CoinMarketCap API response for top 250 coins
     def all_tokens
-        all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/')
+        all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?limit=250')
     end
 
     # Assemble holdings and API request into a portfolio
