@@ -60,11 +60,11 @@ class HoldingsController < ApplicationController
         # @names_and_amounts = names_and_amounts(@holdings)
         @all_tokens.each do |token|
             if @portfolio_names.include? token["id"]
-                token["holding"] = get_amount(token["id"])
+                token["amount"] = get_amount(token["id"])
                 @portfolio.push(token)
             end
         end
-        puts @portfolio
+        @portfolio
     end
 
     # Return the holding amount of a given token
