@@ -2,6 +2,9 @@ class HoldingsController < ApplicationController
 
     def index
         @holdings = Holding.all
+        puts all_tokens[0]
+        puts @holdings.to_a[0]
+        puts portfolio_names
     end
     
     def show
@@ -43,6 +46,20 @@ class HoldingsController < ApplicationController
         @holding.destroy
 
         redirect_to holdings_path
+    end
+
+    def all_tokens
+        all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/', format: :plain)
+        JSON.parse all_tokens, symbolize_names: true
+    end
+
+    def portfolio_names
+        @portfolio_names = Array.new
+        @holdings = Holding.all
+        @holdings.each do |holding|
+            @portfolio_names.push(holding.crypto)
+        end
+        @portfolio_names
     end
 
     private
