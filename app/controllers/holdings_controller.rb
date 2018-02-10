@@ -47,6 +47,7 @@ class HoldingsController < ApplicationController
     end
 
     # Return CoinMarketCap API response for top 250 coins
+    # Change limit to increase the scope
     def all_tokens
         all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/?limit=250')
     end
