@@ -57,9 +57,9 @@
             <td>
                 <%= holding["percent_change_7d"] %> %
             </td>
-            <td><%= link_to 'Details', holding_path(holding["name"]) %></td>
-            <td><%= link_to 'Update', edit_holding_path(holding["name"]) %></td>
-            <td><%= link_to 'Delete', holding_path(holding["name"]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Details', holding_path(holding["id"]) %></td>
+            <td><%= link_to 'Update', edit_holding_path(holding["id"]) %></td>
+            <td><%= link_to 'Delete', holding_path(holding["id"]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
 </table>
