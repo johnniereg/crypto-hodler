@@ -23,11 +23,11 @@
 
     <% @portfolio.each do |holding| %>
 
-        <% @usd_value = (holding["amount"].to_f * holding["price_usd"].to_f) %>
         <% @btc_value = (holding["amount"].to_f * holding["price_btc"].to_f) %>
+        <% @usd_value = (holding["amount"].to_f * holding["price_usd"].to_f) %>
 
-        <% @total_usd += @usd_value %>
         <% @total_btc += @btc_value %>
+        <% @total_usd += @usd_value %>
 
         <tr>
             <td>
