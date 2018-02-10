@@ -2,9 +2,7 @@ class HoldingsController < ApplicationController
 
     def index
         @holdings = Holding.all
-        puts all_tokens[0]
-        puts @holdings.to_a[0]
-        puts portfolio_names
+        puts build_portfolio
     end
     
     def show
@@ -49,8 +47,20 @@ class HoldingsController < ApplicationController
     end
 
     def all_tokens
-        all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/', format: :plain)
-        JSON.parse all_tokens, symbolize_names: true
+        all_tokens = HTTParty.get('https://api.coinmarketcap.com/v1/ticker/')
+        # JSON.parse all_tokens, symbolize_names: true
+    end
+
+    def build_portfolio
+        @portfolio = Array.new
+        @all_tokens = all_tokens
+        @portfolio_names = portfolio_names
+        @all_tokens.each do |token|
+            if @portfolio_names.include? token["id"]
+                @portfolio.push(token)
+            end
+        end
+        @portfolio
     end
 
     def portfolio_names
